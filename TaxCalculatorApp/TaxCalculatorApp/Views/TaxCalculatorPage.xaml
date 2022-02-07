@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaxCalculatorApp.Views.TaxCalculatorPage"
+             Title="Get Tax Rate"
+             BackgroundColor="#2196F3">
+    
+    <ContentPage.Content>
+        
+        <StackLayout VerticalOptions="StartAndExpand" 
+                     HorizontalOptions="CenterAndExpand"
+                     Spacing="5"
+                     Margin="0">
+
+            <Label Text="Enter Zip Code For Location (US &amp; Canada):"
+                   TextColor="WhiteSmoke"
+                   FontSize="Small"/>
+
+            <Entry Text="{Binding Location.Zip}"
+                   BackgroundColor="White"
+                   Placeholder="Required" />
+
+            <Button Text="Get Tax Rates" 
+                    Command="{Binding GetTaxRate}"
+                    BackgroundColor="Blue"
+                    TextColor="White" />
+            
+            <Frame IsVisible="{Binding IsRefreshing}"
+                   BackgroundColor="Transparent"
+                   WidthRequest="50"
+                   HeightRequest="50"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center">
+                <ActivityIndicator Color="White" IsRunning="True" />
+            </Frame>
+            
+            <TableView Intent="Settings"
+                       RowHeight="30"
+                       BackgroundColor="White">
+                <TableRoot>
+                    <TableSection Title="Location">
+                        <ViewCell Height="30">
+                            <StackLayout Orientation="Horizontal"
+                                         Margin="15,5,10,0">
+                                <Label Text="City"
+                                       FontSize="Small"/>
+                                <Label Text="{Binding TaxRateResult.Location.City}"
+                                       HorizontalOptions="EndAndExpand" />
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell Height="30">
+                            <StackLayout Orientation="Horizontal"
+                                         Margin="15,5,10,0">
+                                <Label Text="State" />
+                                <Label Text="{Binding TaxRateResult.Location.State}"
+                                       HorizontalOptions="EndAndExpand" />
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell Height="30">
+                            <StackLayout Orientation="Horizontal"
+                                         Margin="15,5,10,0">
+                                <Label Text="Country" />
+                                <Label Text="{Binding TaxRateResult.Location.Country}"
+                                       HorizontalOptions="EndAndExpand" />
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell Height="30">
+                            <StackLayout Orientation="Horizontal"
+                                         Margin="15,5,10,0">
+                                <Label Text="Zip" />
+                                <Label Text="{Binding TaxRateResult.Location.Zip}"
+                                       HorizontalOptions="EndAndExpand" />
+                            </StackLayout>
+                        </ViewCell>
+                        
+                    </TableSection>
+                    <TableSection Title="Tax Rates">
+                        <ViewCell Height="30">
+                            <StackLayout Orientation="Horizontal"
+                                         Margin="15,5,15,0">
+                                <Label Text="Combined Rate" />
+                                <Label Text="{Binding TaxRateResult.CombinedRate}"
+                                       HorizontalOptions="EndAndExpand" />
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell Height="30">
+                            <StackLayout Orientation="Horizontal"
+                                         Margin="15,5,15,0">
+                                <Label Text="State Rate" />
+                                <Label Text="{Binding TaxRateResult.StateRate}"
+                                       HorizontalOptions="EndAndExpand" />
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell Height="30">
+                            <StackLayout Orientation="Horizontal"
+                                         Margin="15,5,15,0">
+                                <Label Text="County Rate" />
+                                <Label Text="{Binding TaxRateResult.CountyRate}"
+                                       HorizontalOptions="EndAndExpand" />
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell Height="30">
+                            <StackLayout Orientation="Horizontal"
+                                         Margin="15,5,15,0">
+                                <Label Text="City Rate" />
+                                <Label Text="{Binding TaxRateResult.CityRate}"
+                                       HorizontalOptions="EndAndExpand" />
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell Height="30">
+                            <StackLayout Orientation="Horizontal"
+                                         Margin="15,5,15,0">
+                                <Label Text="Combined Dist. Rate" />
+                                <Label Text="{Binding TaxRateResult.CombinedDistrictRate}"
+                                       HorizontalOptions="EndAndExpand" />
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

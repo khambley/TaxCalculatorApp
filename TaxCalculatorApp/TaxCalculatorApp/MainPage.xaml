@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaxCalculatorApp.MainPage"
+             Title="Tax Calculator"
+             Padding="0"
+             BackgroundColor="#2196F3">
+
+    <StackLayout>
+
+        <Label Text="Let's Calculate Some Sales Tax!"
+                   FontSize="Medium"
+                   FontAttributes="Bold"
+                   TextColor="WhiteSmoke"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="0,10,0,10" />
+
+        <Image Source="unclesam.jpg"
+                   WidthRequest="300"
+                   HeightRequest="300"
+                HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Margin="10" />
+        
+        <Label Text="Select an option below to get started..."
+               HorizontalOptions="CenterAndExpand"
+               FontSize="Small"/>
+        
+
+        <Button Text="Get Tax Rates For Location"
+                Command="{Binding GoToTaxRatesPage}"
+                BackgroundColor="Black"
+                TextColor="White"/>
+        
+        <Button Text="Calculate Tax For Order" 
+                Command="{Binding GoToTaxOrderPage}"
+                BackgroundColor="White" />
+    </StackLayout>
+
+</ContentPage>
